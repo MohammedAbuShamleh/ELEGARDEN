@@ -1,0 +1,13 @@
+{
+  "name": "elegarden-landing",
+  "private": true,
+  "version": "1.0.0",
+  "description": "Elegarden landing page (Arabic RTL / English)",
+  "type": "module",
+  "scripts": {
+    "dev": "vite"
+  },
+  "devDependencies": {
+    "vite": "^8.3.2"
+  }
+}

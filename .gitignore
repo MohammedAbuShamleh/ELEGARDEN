@@ -1,0 +1,20 @@
+# dependencies / build output
+node_modules/
+dist/
+*.log
+
+# image tooling: keep the scripts, skip generated or re-downloadable files
+# full-page captures + headless browser profile (compare.py)
+tools/shots/
+# Unsplash source photos (re-download with tools/fetch.py)
+tools/src/
+tools/thumbs/
+# contact sheets, previews, debug output, crops of the reference comp
+tools/*.jpg
+tools/*.png
+
+# OS / editor
+Thumbs.db
+.DS_Store
+.vscode/
+.claude/settings.local.json

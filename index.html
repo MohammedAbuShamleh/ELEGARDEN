@@ -1,0 +1,354 @@
+﻿<!doctype html>
+<html lang="ar" dir="rtl">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Elegarden — تنسيق وتصميم الحدائق</title>
+  <meta name="description" content="تصميم الحدائق وتخطيطها وتنفيذها والعناية بها. ننشئ لك حديقة جميلة وعمليّة خلال 60 يوماً.">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Alexandria:wght@200;300;400;500;600;700&family=Exo+2:ital,wght@0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,700&family=Oswald:wght@300;400;500&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="assets/css/style.css">
+  <script>
+    // pick the language before first paint: ?lang= wins, then the saved choice, then Arabic
+    (function () {
+      var p = new URLSearchParams(location.search).get('lang'), s = null;
+      try { s = localStorage.getItem('eg-lang'); } catch (e) {}
+      var l = p === 'en' || p === 'ar' ? p : (s === 'en' ? 'en' : 'ar');
+      var h = document.documentElement;
+      h.lang = l; h.dir = l === 'ar' ? 'rtl' : 'ltr';
+      if (!/[?&]capture/.test(location.search)) h.classList.add('js');
+    })();
+  </script>
+</head>
+<body>
+
+<!-- ============ SVG sprite ============ -->
+<svg class="sprite" aria-hidden="true">
+  <defs>
+    <linearGradient id="g-gold" x1="0" y1="0" x2="1" y2="1">
+      <stop offset="0" stop-color="#f0c27f"/>
+      <stop offset=".5" stop-color="#d29a52"/>
+      <stop offset="1" stop-color="#b07a3a"/>
+    </linearGradient>
+    <linearGradient id="g-gold-v" x1="0" y1="0" x2="0" y2="1">
+      <stop offset="0" stop-color="#f3cd8e"/>
+      <stop offset=".45" stop-color="#d9a35c"/>
+      <stop offset="1" stop-color="#b98242"/>
+    </linearGradient>
+    <linearGradient id="g-bronze" x1="0" y1="0" x2="1" y2="0">
+      <stop offset="0" stop-color="#9b7a4c" stop-opacity="0"/>
+      <stop offset=".25" stop-color="#8d6d43" stop-opacity=".55"/>
+      <stop offset=".5" stop-color="#c39a5f"/>
+      <stop offset=".75" stop-color="#8d6d43" stop-opacity=".55"/>
+      <stop offset="1" stop-color="#9b7a4c" stop-opacity="0"/>
+    </linearGradient>
+
+    <symbol id="i-logo" viewBox="0 0 44 44">
+      <g fill="none" stroke="url(#g-gold)" stroke-width="3.4" stroke-linejoin="miter">
+        <g id="logo-q"><path d="M5 19V5h14v6.5h-7.5V16h4"/><path d="M5 23.5V19"/></g>
+        <use href="#logo-q" transform="rotate(90 22 22)"/>
+        <use href="#logo-q" transform="rotate(180 22 22)"/>
+        <use href="#logo-q" transform="rotate(270 22 22)"/>
+      </g>
+      <rect x="19.6" y="19.6" width="4.8" height="4.8" transform="rotate(45 22 22)" fill="url(#g-gold)"/>
+    </symbol>
+    <symbol id="i-info" viewBox="0 0 24 24"><circle cx="12" cy="12" r="9" fill="none" stroke="currentColor" stroke-width="1.6"/><path d="M12 11v6" stroke="currentColor" stroke-width="1.8" stroke-linecap="round"/><circle cx="12" cy="7.6" r="1.1" fill="currentColor"/></symbol>
+    <symbol id="i-eye" viewBox="0 0 24 24"><path d="M2 12s3.6-6.5 10-6.5S22 12 22 12s-3.6 6.5-10 6.5S2 12 2 12z" fill="none" stroke="currentColor" stroke-width="1.6"/><circle cx="12" cy="12" r="3" fill="none" stroke="currentColor" stroke-width="1.6"/></symbol>
+    <symbol id="i-chev-l" viewBox="0 0 24 24"><path d="M14.5 6.5 9 12l5.5 5.5" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></symbol>
+    <symbol id="i-chev-r" viewBox="0 0 24 24"><path d="M9.5 6.5 15 12l-5.5 5.5" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></symbol>
+    <symbol id="i-chev-d" viewBox="0 0 24 24"><path d="M6.5 9.5 12 15l5.5-5.5" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></symbol>
+    <symbol id="i-pin" viewBox="0 0 32 32"><g fill="none" stroke="currentColor" stroke-width="1.6" stroke-linejoin="round"><path d="M16 26s8-7.6 8-14a8 8 0 1 0-16 0c0 6.4 8 14 8 14z"/><circle cx="16" cy="12" r="3"/><path d="M10.5 23.5C7 24.3 5 25.5 5 26.8 5 28.6 9.9 30 16 30s11-1.4 11-3.2c0-1.3-2-2.5-5.5-3.3"/></g></symbol>
+    <symbol id="i-phone" viewBox="0 0 32 32"><g fill="none" stroke="currentColor" stroke-width="1.6"><rect x="9" y="3" width="14" height="26" rx="2.5"/><path d="M14 25.2h4M13.5 6.5h5"/></g></symbol>
+    <symbol id="i-mail" viewBox="0 0 32 32"><g fill="none" stroke="currentColor" stroke-width="1.6" stroke-linejoin="round"><rect x="3.5" y="7" width="25" height="18" rx="1.5"/><path d="m4 8 12 9.5L28 8M4 24.5l9.2-8.6M28 24.5l-9.2-8.6"/></g></symbol>
+    <symbol id="i-viber" viewBox="0 0 24 24"><g fill="none" stroke="currentColor" stroke-width="1.5" stroke-linejoin="round"><path d="M12 2.8c-5.2 0-8.4 2-8.4 7.6 0 3.3 1 5.3 3.1 6.4v3.9l3.1-2.8c.7.1 1.4.1 2.2.1 5.2 0 8.4-2 8.4-7.6S17.2 2.8 12 2.8z"/><path d="M9.2 7.4c.4-.4.9-.4 1.2 0l.8 1.1c.3.4.2.8-.1 1.1l-.4.4c.4 1 1.2 1.9 2.3 2.3l.4-.4c.3-.3.8-.4 1.1-.1l1.1.8c.4.3.4.8 0 1.2l-.6.6c-.6.6-1.6.7-2.4.2-1.8-1-3.1-2.3-4.1-4.1-.5-.8-.4-1.8.2-2.4z"/><path d="M12.6 6.4a3.4 3.4 0 0 1 3 3M12.4 4.7a5.1 5.1 0 0 1 4.9 4.9"/></g></symbol>
+    <symbol id="i-whatsapp" viewBox="0 0 24 24"><g fill="none" stroke="currentColor" stroke-width="1.5" stroke-linejoin="round"><path d="M3.6 20.4 5 16.3A8.6 8.6 0 1 1 8 19.2z"/><path d="M9 8.2c.4-.4.9-.4 1.2 0l.7 1c.3.4.2.8-.1 1.1l-.4.4c.4 1 1.2 1.8 2.2 2.2l.4-.4c.3-.3.8-.4 1.1-.1l1 .7c.4.3.4.8 0 1.2l-.5.5c-.6.6-1.5.7-2.3.2-1.7-1-3-2.2-3.9-3.9-.4-.8-.3-1.7.3-2.3z"/></g></symbol>
+    <symbol id="i-telegram" viewBox="0 0 24 24"><g fill="none" stroke="currentColor" stroke-width="1.5" stroke-linejoin="round"><path d="M21.4 3.6 2.9 10.8c-.7.3-.7 1.2 0 1.5l4.6 1.6 1.8 5.7c.2.6 1 .8 1.5.3l2.7-2.6 4.8 3.5c.6.4 1.4.1 1.5-.6l2.9-15.5c.1-.8-.6-1.4-1.3-1.1z"/><path d="m7.5 13.9 10-6.6-7.7 7.4-.5 4.9"/></g></symbol>
+    <symbol id="i-bush" viewBox="0 0 40 40"><g fill="none" stroke="currentColor" stroke-width="1.3" stroke-linejoin="round" stroke-linecap="round"><path d="M10 27c-3 0-5-2.1-5-4.6s2-4.5 4.6-4.5c.2-3.2 2.8-5.6 6-5.6 1.3-2.8 4-4.6 7.1-4.6 4.2 0 7.6 3.3 7.8 7.4 2.7.3 4.6 2.5 4.6 5.1 0 3-2.4 5.3-5.3 5.3z"/><path d="M18.5 27v5.5M22 27v5.5M14 32.5h12"/><path d="M14 20.5c1.2-1.4 3-2.2 4.8-2M24 15.5c1.6.3 3 1.3 3.7 2.8"/><circle cx="30.5" cy="9" r="2"/><path d="M30.5 6.2V4.6M33.3 9h1.6M30.5 11.8v1.6M27.7 9h-1.6"/></g></symbol>
+    <symbol id="i-roof" viewBox="0 0 40 40"><g fill="none" stroke="currentColor" stroke-width="1.3" stroke-linejoin="round" stroke-linecap="round"><path d="M6 31c0-8.6 6.3-15.6 14-15.6S34 22.4 34 31"/><path d="M3.5 31h33M11 31v-5.5M29 31v-5.5M16.5 31v-4h7v4"/><path d="M12.5 18.6 13 15l1.6 2.6M17.6 16 19 12.5l1 3.4M22 15.7l1.8-3 .4 3.4M26.2 17.7l2-2.6v3.4"/></g></symbol>
+    <symbol id="i-consult" viewBox="0 0 40 40"><g fill="none" stroke="currentColor" stroke-width="1.3" stroke-linejoin="round" stroke-linecap="round"><circle cx="20" cy="12.5" r="3.6"/><circle cx="11" cy="15.5" r="3"/><circle cx="29" cy="15.5" r="3"/><path d="M13 30.5c0-5 3.1-9 7-9s7 4 7 9M5.5 29c0-4 2.4-7.3 5.5-7.3 1 0 1.9.3 2.7.9M34.5 29c0-4-2.4-7.3-5.5-7.3-1 0-1.9.3-2.7.9M4 31h32"/></g></symbol>
+    <symbol id="i-flower" viewBox="0 0 40 40"><g fill="none" stroke="currentColor" stroke-width="1.3" stroke-linejoin="round" stroke-linecap="round"><circle cx="20" cy="12" r="2.6"/><path d="M20 9.4c-1.4-2.6-.6-4.9 0-5.8.6.9 1.4 3.2 0 5.8zM22.5 11.2c2.3-1.8 4.7-1.4 5.7-1-.5 1-2.2 2.8-5.1 2.6zM21.6 14.3c2 2.1 2.2 4.5 1.9 5.6-1-.4-2.9-1.9-3.2-4.8zM18.4 14.3c-2 2.1-2.2 4.5-1.9 5.6 1-.4 2.9-1.9 3.2-4.8zM17.5 11.2c-2.3-1.8-4.7-1.4-5.7-1 .5 1 2.2 2.8 5.1 2.6z"/><path d="M20 20v14M20 28c-3.4.2-5.6-1.8-6.4-4 3.3-.2 5.5 1.3 6.4 4zM20 25.5c3.2.2 5.2-1.6 6-3.7-3.1-.2-5.1 1.2-6 3.7zM14 34h12"/></g></symbol>
+    <symbol id="i-cross" viewBox="0 0 60 60"><g fill="none" stroke="currentColor" stroke-width="1"><circle cx="30" cy="30" r="14"/><path d="M30 6v48M6 30h48"/></g></symbol>
+  </defs>
+</svg>
+
+<!-- ============ HERO ============ -->
+<header class="hero" id="top">
+  <div class="hero__bg"></div>
+  <img class="hero__canopy" src="assets/img/eucalyptus.webp" alt="">
+  <div class="hero__shade"></div>
+  <img class="hero__leaves hero__leaves--tl" data-depth="26" src="assets/img/leaves.webp" alt="">
+
+  <div class="topbar container">
+    <a class="brand" href="#top" aria-label="Elegarden">
+      <svg class="brand__icon"><use href="#i-logo"/></svg>
+      <span class="brand__note" data-i18n="brandNote">5 سنوات في خدمة جمال<br>الحدائق ووظيفتها</span>
+    </a>
+    <button class="burger" type="button" data-i18n-aria="menu" aria-label="القائمة" aria-expanded="false" aria-controls="menu">
+      <span></span><span></span><span></span>
+      <svg><use href="#i-chev-d"/></svg>
+    </button>
+    <div class="topbar__end">
+      <button class="lang" type="button" data-i18n="langBtn" data-i18n-aria="langAria" aria-label="Switch to English">EN</button>
+      <a class="topbar__phone" href="tel:+79222466655"><i></i><span class="num" dir="ltr">+7 (922) 246 66 55</span></a>
+    </div>
+  </div>
+
+  <div class="hero__inner narrow">
+    <p class="hero__tagline" data-reveal data-i18n="tagline">غيّر <em>تنسيق الحدائق</em> من حولك<br>وأبرِز شخصيتك المميّزة</p>
+
+    <h1 class="hero__title" data-reveal>
+      <span class="sr-only">Elegarden</span>
+      <svg viewBox="0 0 964 190" aria-hidden="true">
+        <defs>
+          <linearGradient id="g-title" x1="0" y1="0" x2="0" y2="1">
+            <stop offset="0" stop-color="#f7f3ec"/>
+            <stop offset=".62" stop-color="#ece6dc"/>
+            <stop offset="1" stop-color="#d9d1c4"/>
+          </linearGradient>
+          <filter id="f-title" x="-5%" y="-20%" width="110%" height="160%">
+            <feDropShadow dx="0" dy="14" stdDeviation="16" flood-color="#000" flood-opacity=".38"/>
+          </filter>
+          <filter id="f-soft" x="-30%" y="-30%" width="160%" height="160%">
+            <feDropShadow dx="2" dy="10" stdDeviation="7" flood-color="#000" flood-opacity=".45"/>
+          </filter>
+          <clipPath id="c-vine"><rect x="440" y="-60" width="270" height="260"/></clipPath>
+          <linearGradient id="g-stem" x1="0" y1="0" x2="1" y2="0">
+            <stop offset="0" stop-color="#7d9c4a"/>
+            <stop offset="1" stop-color="#4f7a2e"/>
+          </linearGradient>
+        </defs>
+        <text id="title-text" x="0" y="168" textLength="964" lengthAdjust="spacingAndGlyphs" fill="url(#g-title)" filter="url(#f-title)">ELEGARDEN</text>
+        <g class="vine" filter="url(#f-soft)">
+          <!-- stem: flower → under G → A → up across R D → past the N -->
+          <path d="M226 92c30 30 64 50 112 52 40 2 66-6 96-8 40-2 70 6 96-2" fill="none" stroke="url(#g-stem)" stroke-width="3.4" stroke-linecap="round"/>
+          <path d="M690 92c50-6 96-28 140-54 34-20 62-40 96-50 20-6 40-4 56 6" fill="none" stroke="url(#g-stem)" stroke-width="3" stroke-linecap="round"/>
+          <path d="M346 144c8-16 26-20 32-10 5 9-4 15-10 9" fill="none" stroke="#6f9440" stroke-width="2" stroke-linecap="round"/>
+          <path d="M930 -4c12-22 34-26 42-14 6 10-4 18-12 12" fill="none" stroke="#6f9440" stroke-width="2" stroke-linecap="round"/>
+          <path d="M792 54c-2-18 10-30 22-26 10 4 6 16-2 16" fill="none" stroke="#6f9440" stroke-width="1.8" stroke-linecap="round"/>
+          <image href="assets/img/vine.webp" x="452" y="-6" width="400" height="240" clip-path="url(#c-vine)" transform="rotate(-10 652 114)"/>
+          <image href="assets/img/sprout.webp" x="842" y="-34" width="56" height="79" transform="rotate(58 870 6)"/>
+          <image href="assets/img/sprout.webp" x="104" y="-46" width="84" height="118" transform="rotate(-58 146 13)"/>
+          <image href="assets/img/sprout.webp" x="214" y="44" width="92" height="129" transform="rotate(128 260 108)"/>
+          <image href="assets/img/plumeria.webp" x="22" y="-26" width="236" height="165" style="filter: brightness(1.28) contrast(1.06) saturate(1.1)"/>
+          <circle cx="236" cy="-34" r="5.5" fill="#a5452f"/>
+          <path d="M236 -28c1 9-3 16-9 21" fill="none" stroke="#6f9440" stroke-width="2"/>
+        </g>
+      </svg>
+    </h1>
+
+    <div class="hero__lead" data-reveal>
+      <p data-i18n="lead">ننشئ لك حديقة جميلة<br>وعمليّة خلال</p>
+      <span class="hero__dash"></span>
+      <p class="hero__days"><b>60</b> <span data-i18n="days">يوماً</span></p>
+    </div>
+  </div>
+
+  <svg class="wave wave--hero" viewBox="0 0 1920 110" preserveAspectRatio="none" aria-hidden="true">
+    <path d="M0 50C300 28 560 34 760 48c60 6 120 12 152 12 24 0 28-26 48-26s24 26 48 26c32 0 92-6 152-12 200-14 460-20 760 4v58H0z" fill="#f8f5f0"/>
+  </svg>
+  <a class="scroll-down" href="#about" data-i18n-aria="scrollDown" aria-label="انتقل للأسفل"><svg><use href="#i-chev-d"/></svg></a>
+</header>
+
+<!-- foliage that hangs over the hero / intro seam -->
+<div class="float-leaves" aria-hidden="true">
+  <img class="float-leaves__a" data-depth="18" src="assets/img/leaves.webp" alt="">
+  <img class="float-leaves__b" data-depth="34" src="assets/img/leaves.webp" alt="">
+  <img class="float-leaves__c" data-depth="10" src="assets/img/eucalyptus.webp" alt="">
+</div>
+
+<!-- ============ MENU ============ -->
+<nav class="menu" id="menu" aria-hidden="true">
+  <div class="menu__inner">
+    <a href="#about" data-i18n="navAbout">من نحن</a>
+    <a href="#projects" data-i18n="navProjects">مشاريعنا</a>
+    <a href="#services" data-i18n="navServices">خدماتنا</a>
+    <a href="#blog" data-i18n="navBlog">المدوّنة</a>
+    <a href="#contacts" data-i18n="navContacts">تواصل معنا</a>
+    <a class="menu__phone" href="tel:+79222466655" dir="ltr">+7 (922) 246 66 55</a>
+  </div>
+</nav>
+
+<main>
+<!-- ============ ABOUT + PROJECTS ============ -->
+<section class="intro" id="about">
+  <img class="intro__sketch intro__sketch--a" src="assets/img/sketch.webp" alt="">
+  <img class="intro__sketch intro__sketch--b" src="assets/img/sketch.webp" alt="">
+
+  <div class="container about">
+    <div class="about__media" data-reveal>
+      <img class="about__ball" src="assets/img/sphere.webp" data-i18n-alt="ballAlt" alt="كرة مشذّبة من نبات البقس">
+      <svg class="about__five" viewBox="0 0 70 212" aria-hidden="true">
+        <text x="35" y="206" text-anchor="middle" textLength="64" lengthAdjust="spacingAndGlyphs" class="five five--base">5</text>
+        <text x="35" y="206" text-anchor="middle" textLength="64" lengthAdjust="spacingAndGlyphs" class="five five--line">5</text>
+      </svg>
+      <span class="about__years" data-i18n="years">سنوات</span>
+    </div>
+
+    <div class="about__text">
+      <h2 class="h-display" data-reveal data-i18n="aboutTitle">نحرس <b>جمال</b><br><b>ووظيفة</b> حدائقكم</h2>
+      <span class="dots" aria-hidden="true"><i></i><i></i><i></i></span>
+      <p class="about__lead" data-reveal data-i18n="aboutLead">تقدّم Elegarden خدمات تنسيق الحدائق وتخطيطها وتنفيذها، وتجهيز المساحات الخارجية، والتشجير، والعناية بالحدائق وصيانتها.</p>
+      <p class="about__copy" data-reveal data-i18n="aboutCopy">أُسِّست شركة Elegarden لتنسيق الحدائق لتحوّل فكرة حديقتك إلى واقع. نرسم فكرة الحديقة والتشجير مبكراً، قبل حلول دفء الربيع: نناقش التفاصيل، ونصوغ رغباتك، ونتابع معك كيف يتّخذ حلم حديقتك ملامحه الواضحة.</p>
+      <a class="pill pill--about" href="#projects" data-reveal><svg><use href="#i-info"/></svg><span data-i18n="learnMore">اعرف المزيد</span></a>
+    </div>
+
+    <div class="stats" data-reveal>
+      <p class="stats__label" data-i18n="statsLabel">مشروعاً<span>منجزاً</span></p>
+      <div class="stats__num">
+        <svg viewBox="0 0 150 212" aria-hidden="true">
+          <defs>
+            <linearGradient id="g-num" x1="0" y1="0" x2="0" y2="1">
+              <stop offset="0" stop-color="#7a6248"/>
+              <stop offset=".5" stop-color="#4a3f33"/>
+              <stop offset="1" stop-color="#242220"/>
+            </linearGradient>
+          </defs>
+          <text x="75" y="207" text-anchor="middle" textLength="150" lengthAdjust="spacingAndGlyphs" fill="url(#g-num)">15</text>
+        </svg>
+        <img class="stats__leaf" src="assets/img/sprout.webp" alt="">
+      </div>
+      <span class="stats__plus">+</span>
+    </div>
+  </div>
+
+  <!-- projects -->
+  <div class="container" id="projects">
+    <div class="board" data-reveal>
+      <div class="board__tabs" role="tablist">
+        <button class="board__tab is-active" role="tab" aria-selected="true" data-tab="private" data-i18n="tabPrivate">حدائق خاصة</button>
+        <button class="board__tab" role="tab" aria-selected="false" data-tab="public" data-i18n="tabPublic">مساحات عامة</button>
+      </div>
+      <div class="board__shape" aria-hidden="true">
+        <svg class="board__ramp" viewBox="0 0 120 56" preserveAspectRatio="none"><path d="M0 0h18c34 0 44 18 58 36 10 13 22 20 44 20H0z"/></svg>
+        <svg class="board__underline" viewBox="0 0 300 60" preserveAspectRatio="none"><path d="M0 22h178c34 0 44 18 58 36"/></svg>
+      </div>
+
+      <button class="orb orb--prev" type="button" data-i18n-aria="prev" aria-label="السابق" data-dir="-1"><svg><use href="#i-chev-l"/></svg></button>
+      <button class="orb orb--next" type="button" data-i18n-aria="next" aria-label="التالي" data-dir="1"><svg><use href="#i-chev-r"/></svg></button>
+
+      <div class="board__viewport">
+        <div class="board__track" data-track="projects"></div>
+      </div>
+    </div>
+  </div>
+
+  <h2 class="h-section" data-reveal data-i18n="servicesTitle">أبرز <span>خدماتنا</span></h2>
+</section>
+
+<!-- ============ SERVICES ============ -->
+<section class="services" id="services">
+  <div class="services__sky"></div>
+  <div class="services__ground"><div></div></div>
+  <div class="services__shade"></div>
+
+  <svg class="wave wave--svc-top" viewBox="0 0 1920 80" preserveAspectRatio="none" aria-hidden="true">
+    <path d="M0 0h1920v8c-420 4-740 22-910 42-20 2-35 8-42 16-8 10-8 10-16 0-7-8-22-14-42-16C740 30 420 12 0 8z" fill="#f8f5f0"/>
+  </svg>
+  <svg class="svc-pin" viewBox="0 0 28 78" aria-hidden="true">
+    <g fill="none" stroke="url(#g-gold-v)" stroke-width="1.6">
+      <circle cx="14" cy="8" r="5"/><path d="M14 13v44M8 22c3 2 9 2 12 0"/>
+      <path d="M14 57l-5 6 5 6 5-6z"/>
+    </g>
+    <circle cx="14" cy="63" r="1.8" fill="#d6a15c"/>
+  </svg>
+
+  <svg class="cross cross--tl"><use href="#i-cross"/></svg>
+  <svg class="cross cross--tr"><use href="#i-cross"/></svg>
+  <svg class="cross cross--bl"><use href="#i-cross"/></svg>
+  <svg class="cross cross--br"><use href="#i-cross"/></svg>
+
+  <div class="container services__stage">
+    <p class="svc-title" aria-live="polite"><b>تخطيط</b><span>الحدائق</span></p>
+    <i class="svc-title__dash"></i>
+
+    <div class="ring">
+      <div class="ring__scene"><img src="assets/img/ring-scene.jpg" alt=""></div>
+      <svg class="ring__frame" viewBox="-30 -30 452 482" aria-hidden="true">
+        <g fill="none" stroke="url(#g-gold-v)" stroke-width="1.6">
+          <path d="M224 4.6A196 196 0 0 1 392 196 196 196 0 0 1 196 392 196 196 0 0 1 0 196 196 196 0 0 1 168 4.6"/>
+          <circle cx="196" cy="0" r="27"/>
+          <path d="M196 392v26"/>
+        </g>
+        <circle cx="160" cy="6" r="3.4" fill="none" stroke="#d29a52" stroke-width="1.4"/>
+        <circle cx="232" cy="6" r="3.4" fill="none" stroke="#d29a52" stroke-width="1.4"/>
+        <circle cx="196" cy="423" r="3.6" fill="none" stroke="#d29a52" stroke-width="1.6"/>
+        <path d="M184 13 196 -14 208 13M188.5 3h15M179 15h10M203 15h10" fill="none" stroke="url(#g-gold-v)" stroke-width="2"/>
+      </svg>
+      <img class="ring__tool" src="assets/img/compass.webp" data-i18n-alt="compassAlt" alt="فرجار هندسي">
+      <button class="ring__nav ring__nav--prev" type="button" data-i18n-aria="svcPrev" aria-label="الخدمة السابقة"><svg><use href="#i-chev-l"/></svg></button>
+      <button class="ring__nav ring__nav--next" type="button" data-i18n-aria="svcNext" aria-label="الخدمة التالية"><svg><use href="#i-chev-r"/></svg></button>
+    </div>
+
+    <div class="svc-side svc-side--start" data-side="start"></div>
+    <div class="svc-side svc-side--end" data-side="end"></div>
+
+    <a class="pill pill--dark" href="#contacts"><svg><use href="#i-eye"/></svg><span data-i18n="details">التفاصيل</span></a>
+  </div>
+
+  <img class="services__bonsai" data-depth="10" src="assets/img/bonsai.webp" data-i18n-alt="niwakiAlt" alt="شجرة نيواكي مشذّبة">
+  <img class="services__leaves" data-depth="14" src="assets/img/leaves.webp" alt="">
+
+  <svg class="wave wave--svc-bottom" viewBox="0 0 1920 90" preserveAspectRatio="none" aria-hidden="true">
+    <path d="M0 26c420-4 760 18 910 34 20 2 35 6 42 12 8 8 8 8 16 0 7-6 22-10 42-12 150-16 490-38 910-34" fill="none" stroke="url(#g-bronze)" stroke-width="10"/>
+    <path d="M0 90V32c420-4 760 18 910 34 20 2 35 6 42 12 8 8 8 8 16 0 7-6 22-10 42-12 150-16 490-38 910-34v58z" fill="#f8f5f0"/>
+  </svg>
+</section>
+
+<!-- ============ BLOG ============ -->
+<section class="blog" id="blog">
+  <h2 class="h-section" data-reveal data-i18n="blogTitle">من <span>مدوّنتنا</span></h2>
+  <div class="container">
+    <div class="board board--blog" data-reveal>
+      <button class="orb orb--prev" type="button" data-i18n-aria="prev" aria-label="السابق" data-dir="-1"><svg><use href="#i-chev-l"/></svg></button>
+      <button class="orb orb--next" type="button" data-i18n-aria="next" aria-label="التالي" data-dir="1"><svg><use href="#i-chev-r"/></svg></button>
+      <div class="board__viewport">
+        <div class="board__track" data-track="blog"></div>
+      </div>
+    </div>
+  </div>
+  <div class="blog__rings" aria-hidden="true"><i></i><i></i><i></i></div>
+</section>
+
+<!-- ============ CONTACTS ============ -->
+<footer class="contacts" id="contacts">
+  <div class="contacts__bg"></div>
+  <svg class="wave wave--contacts" viewBox="0 0 1920 120" preserveAspectRatio="none" aria-hidden="true">
+    <path d="M0 0h1920v100c-420-4-740-34-890-50-30-3-45-16-70-26-25 10-40 23-70 26C740 66 420 96 0 100z" fill="#f8f5f0"/>
+    <path d="M0 104c420-4 740-34 890-50 30-3 45-16 70-26 25 10 40 23 70 26 150 16 470 46 890 50" fill="none" stroke="url(#g-bronze)" stroke-width="12"/>
+  </svg>
+  <span class="contacts__node" aria-hidden="true"></span>
+
+  <div class="container">
+    <h2 class="h-section h-section--light" data-reveal data-i18n="contactsTitle">تواصل معنا</h2>
+    <div class="contacts__grid">
+      <div class="contact" data-reveal>
+        <span class="contact__icon"><svg><use href="#i-pin"/></svg></span>
+        <p data-i18n="address">موسكو، شارع ناخيموفسكي<br>بروسبكت، مبنى 24</p>
+      </div>
+      <div class="contact" data-reveal>
+        <span class="contact__icon"><svg><use href="#i-phone"/></svg></span>
+        <a class="contact__phone num" href="tel:+79257557891" dir="ltr">+7 (925) 755-78-91</a>
+        <div class="contact__social">
+          <a href="#" aria-label="Viber"><svg><use href="#i-viber"/></svg></a>
+          <a href="#" aria-label="WhatsApp"><svg><use href="#i-whatsapp"/></svg></a>
+          <a href="#" aria-label="Telegram"><svg><use href="#i-telegram"/></svg></a>
+        </div>
+      </div>
+      <div class="contact" data-reveal>
+        <span class="contact__icon"><svg><use href="#i-mail"/></svg></span>
+        <a href="mailto:mail@elegarden.ru" dir="ltr">mail@elegarden.ru</a>
+      </div>
+    </div>
+
+    <div class="footbar">
+      <a class="footbar__brand" href="#top"><svg><use href="#i-logo"/></svg>Elegarden</a>
+      <p data-i18n="copyright">جميع الحقوق محفوظة. Elegarden 2020</p>
+    </div>
+  </div>
+</footer>
+</main>
+
+<script src="assets/js/main.js"></script>
+</body>
+</html>
